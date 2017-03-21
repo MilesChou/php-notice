@@ -11,16 +11,23 @@ class ForeachNoticeTest extends PHPUnit_Framework_TestCase
      */
     public function itWillBeTypeCastToIntIfKeyIsNumericWhenForeach()
     {
-        $list = [
-            '111' => 'ABC',
-            '222' => 'DEF',
+        $mixList = [
+            'aaa' => 'ABC',
+            '111' => 'DEF',
         ];
 
-        foreach ($list as $key => $value) {
+        foreach ($mixList as $key => $value) {
             $keyType = gettype($key);
 
-            // **The key will type-cast to integer**
-            $this->assertEquals('integer', $keyType);
+            if ($key === 'aaa') {
+                // $key is aaa
+                $this->assertEquals('string', $keyType);
+            } else {
+                // $key is 111
+
+                // **The key will type-cast to integer**
+                $this->assertEquals('integer', $keyType);
+            }
         }
     }
 }
