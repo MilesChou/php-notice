@@ -14,7 +14,8 @@ before_script:
 - composer install
 
 script:
-- exit 0
+- php vendor/bin/phpcs
+- php vendor/bin/phpunit
 
 cache:
   directories:

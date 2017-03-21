@@ -13,4 +13,5 @@
     <rule ref="PSR2"/>
 
     <!-- Paths and file to check -->
+    <file>tests</file>
 </ruleset>
