@@ -3,6 +3,7 @@
 namespace Notice;
 
 use PHPUnit_Framework_TestCase;
+use stdClass;
 
 class CallableTest extends PHPUnit_Framework_TestCase
 {
@@ -66,4 +67,53 @@ class CallableTest extends PHPUnit_Framework_TestCase
 
         $this->assertTrue($actual);
     }
+
+    /**
+     * @test
+     */
+    public function useAnotherFluentPattern()
+    {
+        $objA = new stdClass();
+        $objB = new stdClass();
+        $objC = new stdClass();
+
+        /* PHP 7.0 can run this
+            fluentFunc($objA, 'foo', 'barA')($objB, 'foo', 'barB')($objC, 'foo', 'barC');
+        */
+
+        // Compatibility in 5.x , but not good
+        call_user_func(
+            call_user_func(
+                fluentFunc(
+                    $objA,
+                    'foo',
+                    'barA'
+                ),
+                $objB,
+                'foo',
+                'barB'
+            ),
+            $objC,
+            'foo',
+            'barC'
+        );
+
+        $this->assertAttributeEquals('barA', 'foo', $objA);
+        $this->assertAttributeEquals('barB', 'foo', $objB);
+        $this->assertAttributeEquals('barC', 'foo', $objC);
+    }
+}
+
+/**
+ * @param stdClass $object
+ * @param string $key
+ * @param mixed $value
+ * @return callable
+ */
+function fluentFunc($object, $key, $value)
+{
+
+    $object->$key = $value;
+
+    return __NAMESPACE__ . '\\fluentFunc';
 }
