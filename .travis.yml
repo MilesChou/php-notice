@@ -12,9 +12,9 @@ branches:
 
 before_script:
 # How to use APCu driver on Travis CI
-- echo "extension=apcu.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+- if [[ ${TRAVIS_PHP_VERSION:0:1} == "7" ]]; then echo "extension=apcu.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini; fi
 # How to use MongoDB driver on Travis CI
-- echo "extension=mongodb.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+- if [[ ${TRAVIS_PHP_VERSION:0:1} == "7" ]]; then echo "extension=mongodb.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini; fi
 - php -m
 - composer install
 
