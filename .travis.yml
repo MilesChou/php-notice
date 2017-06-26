@@ -15,6 +15,7 @@ before_script:
 - echo "extension=apcu.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
 # How to use MongoDB driver on Travis CI
 - echo "extension=mongodb.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+- php -m
 - composer install
 
 script:
