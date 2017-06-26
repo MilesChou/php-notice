@@ -11,8 +11,10 @@ branches:
   - master
 
 before_script:
+# How to use APCu driver on Travis CI
+- echo "extension=apcu.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
 # How to use MongoDB driver on Travis CI
-- echo "extension = mongodb.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+- echo "extension=mongodb.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
 - composer install
 
 script:
