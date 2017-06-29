@@ -16,6 +16,7 @@ before_script:
 # How to use MongoDB driver on Travis CI
 - if [[ ${TRAVIS_PHP_VERSION:0:1} == "7" ]]; then echo "extension=mongodb.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini; fi
 - php -m
+- php -i
 - composer install
 
 script:
