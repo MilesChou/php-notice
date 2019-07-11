@@ -12,7 +12,8 @@ class StrposTest extends \PHPUnit_Framework_TestCase
         //strpos('some-text', '');
 
         // But can pass null ... WTF
-        strpos('some-text', null);
+        // PHP 7.3 update: fatal error when pass null
+        //strpos('some-text', null);
 
         $this->assertTrue(true);
     }
