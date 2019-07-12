@@ -4,42 +4,90 @@ namespace Benchmarks;
 
 use PhpBench\Benchmark\Metadata\Annotations\Iterations;
 use PhpBench\Benchmark\Metadata\Annotations\Revs;
+use RuntimeException;
 
 /**
  * Benchmark string
+ *
+ * @AfterMethods({"check"})
  */
 class StringConcatBench
 {
     /**
-     * @Revs(100000)
-     * @Iterations(5)
+     * @var string
      */
-    public function benchSingleQuoteConcat()
-    {
-        $bar = 'bar';
+    private $target;
 
-        $target = 'for' . $bar;
+    public function check()
+    {
+        if($this->target !== 'foobar') {
+            throw new RuntimeException('Check error, expect is foobar, actual is ' . $this->target);
+        }
     }
 
     /**
      * @Revs(100000)
      * @Iterations(5)
      */
-    public function benchDoubleQuoteConcat()
+    public function benchSingleQuote()
     {
         $bar = 'bar';
 
-        $target = "for" . $bar;
+        $this->target = 'foo' . $bar;
     }
 
     /**
      * @Revs(100000)
      * @Iterations(5)
      */
-    public function benchDoubleQuoteConcatWithPreProcess()
+    public function benchDoubleQuote()
     {
         $bar = 'bar';
 
-        $target = "for{$bar}";
+        $this->target = "foo" . $bar;
+    }
+
+    /**
+     * @Revs(100000)
+     * @Iterations(5)
+     */
+    public function benchDoubleQuoteWithPreProcess()
+    {
+        $bar = 'bar';
+
+        $this->target = "foo{$bar}";
+    }
+
+    /**
+     * @Revs(100000)
+     * @Iterations(5)
+     */
+    public function benchSprintf()
+    {
+        $bar = 'bar';
+
+        $this->target = sprintf('foo%s', $bar);
+    }
+
+    /**
+     * @Revs(100000)
+     * @Iterations(5)
+     */
+    public function benchVsprintf()
+    {
+        $bar = 'bar';
+
+        $this->target = vsprintf('foo%s', [$bar]);
+    }
+
+    /**
+     * @Revs(100000)
+     * @Iterations(5)
+     */
+    public function benchStrtr()
+    {
+        $bar = 'bar';
+
+        $this->target = strtr('foo%s', ['%s' => $bar]);
     }
 }
