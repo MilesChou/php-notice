@@ -1,6 +1,6 @@
 <?php
 
-namespace Benchmarks\FunctionCall;
+namespace Benchmarks\MethodCall;
 
 class Stub
 {

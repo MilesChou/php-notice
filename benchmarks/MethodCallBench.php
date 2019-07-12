@@ -2,7 +2,7 @@
 
 namespace Benchmarks;
 
-use Benchmarks\FunctionCall\Stub;
+use Benchmarks\MethodCall\Stub;
 use PhpBench\Benchmark\Metadata\Annotations\Iterations;
 use PhpBench\Benchmark\Metadata\Annotations\Revs;
 use ReflectionClass;
