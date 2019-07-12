@@ -90,4 +90,26 @@ class StringConcatBench
 
         $this->target = strtr('foo%s', ['%s' => $bar]);
     }
+
+    /**
+     * @Revs(100000)
+     * @Iterations(5)
+     */
+    public function benchStrReplace()
+    {
+        $bar = 'bar';
+
+        $this->target = str_replace('%s', $bar, 'foo%s');
+    }
+
+    /**
+     * @Revs(100000)
+     * @Iterations(5)
+     */
+    public function benchStrReplaceArray()
+    {
+        $bar = 'bar';
+
+        $this->target = str_replace(['%s'], [$bar], 'foo%s');
+    }
 }
