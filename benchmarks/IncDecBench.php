@@ -2,14 +2,14 @@
 
 namespace Benchmarks;
 
-use Benchmarks\MethodCall\Stub;
+use PhpBench\Benchmark\Metadata\Annotations\BeforeMethods;
 use PhpBench\Benchmark\Metadata\Annotations\Iterations;
 use PhpBench\Benchmark\Metadata\Annotations\Revs;
-use ReflectionClass;
-use ReflectionMethod;
 
 /**
  * Benchmark the Incrementing/Decrementing Operators
+ *
+ * @BeforeMethods({"init"})
  */
 class IncDecBench
 {
@@ -17,6 +17,11 @@ class IncDecBench
      * @var int
      */
     private $i = 0;
+
+    public function init()
+    {
+        $this->i = 0;
+    }
 
     /**
      * @Revs(100000)

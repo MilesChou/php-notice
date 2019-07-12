@@ -3,11 +3,17 @@
 namespace Benchmarks;
 
 use Benchmarks\MethodCall\Stub;
+use PhpBench\Benchmark\Metadata\Annotations\AfterMethods;
+use PhpBench\Benchmark\Metadata\Annotations\BeforeMethods;
 use PhpBench\Benchmark\Metadata\Annotations\Iterations;
 use PhpBench\Benchmark\Metadata\Annotations\Revs;
 use ReflectionClass;
 use ReflectionMethod;
 
+/**
+ * @BeforeMethods({"init"})
+ * @AfterMethods({"tearDown"})
+ */
 class MethodCallBench
 {
     /**
@@ -15,9 +21,14 @@ class MethodCallBench
      */
     private $object;
 
-    public function __construct()
+    public function init()
     {
         $this->object = new Stub();
+    }
+
+    public function tearDown()
+    {
+        $this->object = null;
     }
 
     /**
