@@ -39,4 +39,45 @@ class ForeachNoticeTest extends PHPUnit_Framework_TestCase
             }
         }
     }
+
+    /**
+     * @test
+     */
+    public function refNoticeWhenForeach()
+    {
+        $list = [1, 2, 3];
+
+        foreach ($list as &$item) {
+            // Do something
+        }
+
+        $this->assertSame([1, 2, 3], $list);
+
+        // The $item is reference to the last item in $list
+        foreach ($list as $k => $item) {
+            if ($k === 0) {
+                // Assign 1 into reference $item, so last item is 1
+                $this->assertSame([1, 2, 1], $list);
+                $this->assertSame(1, $item);
+            }
+
+            if ($k === 1) {
+                // Assign 2 into reference $item, so last item is 2
+                $this->assertSame([1, 2, 2], $list);
+                $this->assertSame(2, $item);
+            }
+
+            if ($k === 2) {
+                // Last item is 2, so assign into reference $item
+                $this->assertSame([1, 2, 2], $list);
+                $this->assertSame(2, $item);
+            }
+        }
+
+        $this->assertSame([1, 2, 2], $list);
+
+        $item = 100;
+
+        $this->assertSame([1, 2, 100], $list);
+    }
 }
