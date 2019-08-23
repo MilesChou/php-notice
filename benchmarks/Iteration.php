@@ -4,7 +4,6 @@ namespace Benchmarks;
 
 use Benchmarks\Iteration\Iterator;
 use PhpBench\Benchmark\Metadata\Annotations\BeforeMethods;
-use PhpBench\Benchmark\Metadata\Annotations\Iterations;
 use PhpBench\Benchmark\Metadata\Annotations\Revs;
 
 /**

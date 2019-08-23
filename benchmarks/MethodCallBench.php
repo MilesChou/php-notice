@@ -5,10 +5,8 @@ namespace Benchmarks;
 use Benchmarks\MethodCall\Stub;
 use PhpBench\Benchmark\Metadata\Annotations\AfterMethods;
 use PhpBench\Benchmark\Metadata\Annotations\BeforeMethods;
-use PhpBench\Benchmark\Metadata\Annotations\Iterations;
 use PhpBench\Benchmark\Metadata\Annotations\Revs;
 use ReflectionClass;
-use ReflectionMethod;
 
 /**
  * @BeforeMethods({"init"})
