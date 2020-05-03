@@ -1,4 +1,5 @@
 <?php
+
 namespace Notice;
 
 class CastNoticeTest extends \PHPUnit_Framework_TestCase

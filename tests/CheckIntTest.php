@@ -1,4 +1,5 @@
 <?php
+
 namespace Notice;
 
 class CheckIntTest extends \PHPUnit_Framework_TestCase

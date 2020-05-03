@@ -1,4 +1,5 @@
 <?php
+
 namespace Notice;
 
 class StrposTest extends \PHPUnit_Framework_TestCase
