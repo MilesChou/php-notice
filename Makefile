@@ -25,4 +25,4 @@ else
 endif
 
 bench:
-	php vendor/bin/phpbench run --report=default
+	php vendor/bin/phpbench run --report=overview benchmarks

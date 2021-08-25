@@ -7,7 +7,7 @@ use PhpBench\Benchmark\Metadata\Annotations\Revs;
 class IfElseBench
 {
     /**
-     * @Revs(100000000)
+     * @Revs(1000000)
      */
     public function benchTrue()
     {
@@ -19,7 +19,7 @@ class IfElseBench
     }
 
     /**
-     * @Revs(100000000)
+     * @Revs(1000000)
      */
     public function benchFalse()
     {

@@ -11,7 +11,7 @@ use PhpBench\Benchmark\Metadata\Annotations\Revs;
  *
  * @BeforeMethods({"init"})
  */
-class Iteration
+class IterationBench
 {
     /**
      * @var array
@@ -29,7 +29,7 @@ class Iteration
     }
 
     /**
-     * @Revs(1000)
+     * @Revs(100)
      */
     public function benchArrayMap()
     {
@@ -41,7 +41,7 @@ class Iteration
     }
 
     /**
-     * @Revs(1000)
+     * @Revs(100)
      */
     public function benchArrayReduce()
     {
@@ -53,7 +53,7 @@ class Iteration
     }
 
     /**
-     * @Revs(1000)
+     * @Revs(100)
      */
     public function benchArrayWalk()
     {
@@ -65,7 +65,7 @@ class Iteration
     }
 
     /**
-     * @Revs(1000)
+     * @Revs(100)
      */
     public function benchFor()
     {
@@ -79,7 +79,7 @@ class Iteration
     }
 
     /**
-     * @Revs(1000)
+     * @Revs(100)
      */
     public function benchForeachValue()
     {
@@ -91,7 +91,7 @@ class Iteration
     }
 
     /**
-     * @Revs(1000)
+     * @Revs(100)
      */
     public function benchForeachKeyValue()
     {
@@ -103,7 +103,7 @@ class Iteration
     }
 
     /**
-     * @Revs(1000)
+     * @Revs(100)
      */
     public function benchGenerator()
     {
@@ -121,7 +121,7 @@ class Iteration
     }
 
     /**
-     * @Revs(1000)
+     * @Revs(100)
      */
     public function benchIterator()
     {
