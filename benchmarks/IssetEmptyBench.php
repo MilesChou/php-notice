@@ -4,19 +4,15 @@ namespace Benchmarks;
 
 use PhpBench\Benchmark\Metadata\Annotations\Iterations;
 use PhpBench\Benchmark\Metadata\Annotations\Revs;
-use RuntimeException;
 
-class IssetIsNullBench
+class IssetEmptyBench
 {
-
     /**
      * @Revs(100000)
      * @Iterations(5)
      */
-    public function benchIsset()
+    public function benchIssetUndefined()
     {
-        $v = null;
-
         $t = isset($v);
     }
 
@@ -24,10 +20,8 @@ class IssetIsNullBench
      * @Revs(100000)
      * @Iterations(5)
      */
-    public function benchEmpty()
+    public function benchEmptyUndefined()
     {
-        $v = null;
-
-        $t = !empty($v);
+        $t = empty($v);
     }
 }

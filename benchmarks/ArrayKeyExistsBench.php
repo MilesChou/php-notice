@@ -13,44 +13,44 @@ class ArrayKeyExistsBench
      * @Revs(100000)
      * @Iterations(5)
      */
-    public function benchIssetOrNotEmptyWhenNotExist()
+    public function benchIssetWhenNotExist()
     {
         $v = [];
 
-        $t = isset($v['foo']) || !empty($v['foo']);
+        $t = isset($v['foo']);
     }
 
     /**
      * @Revs(100000)
      * @Iterations(5)
      */
-    public function benchIssetOrNotEmptyWhenExist()
+    public function benchIssetWhenExist()
     {
         $v = ['foo' => null];
 
-        $t = isset($v['foo']) || !empty($v['foo']);
+        $t = isset($v['foo']);
     }
 
     /**
      * @Revs(100000)
      * @Iterations(5)
      */
-    public function benchIssetAndNotNullWhenNotExist()
+    public function benchEmptyWhenNotExist()
     {
         $v = [];
 
-        $t = isset($v['foo']) && (null !== $v['foo']);
+        $t = empty($v['foo']);
     }
 
     /**
      * @Revs(100000)
      * @Iterations(5)
      */
-    public function benchIssetAndNotNullWhenExist()
+    public function benchEmptyWhenExist()
     {
         $v = ['foo' => null];
 
-        $t = isset($v['foo']) && (null !== $v['foo']);
+        $t = empty($v['foo']);
     }
 
     /**

@@ -7,95 +7,53 @@ use stdClass;
 
 /**
  * See https://www.php.net/manual/en/types.comparisons.php to get examples
+ *
+ * @see IssetEmptyTest
  */
 class ArrayKeyExistsTest extends TestCase
 {
-    public function exists(): iterable
+    public function cases(): iterable
     {
-        yield [['foo' => '']];
-        yield [['foo' => null]];
-        yield [['foo' => []]];
-        yield [['foo' => ['a', 'b']]];
-        yield [['foo' => false]];
-        yield [['foo' => true]];
-        yield [['foo' => 1]];
-        yield [['foo' => 0]];
-        yield [['foo' => -1]];
-        yield [['foo' => '1']];
-        yield [['foo' => '0']];
-        yield [['foo' => '-1']];
-        yield [['foo' => 'str']];
-        yield [['foo' => 'true']];
-        yield [['foo' => 'false']];
-        yield [['foo' => new stdClass()]];
-    }
-
-    public function notExists(): iterable
-    {
-        yield [[]];
+        yield [['foo' => ''], true];
+        yield [['foo' => null], true];
+        yield [['foo' => []], true];
+        yield [['foo' => ['a', 'b']], true];
+        yield [['foo' => false], true];
+        yield [['foo' => true], true];
+        yield [['foo' => 1], true];
+        yield [['foo' => 0], true];
+        yield [['foo' => -1], true];
+        yield [['foo' => '1'], true];
+        yield [['foo' => '0'], true];
+        yield [['foo' => '-1'], true];
+        yield [['foo' => 'str'], true];
+        yield [['foo' => 'true'], true];
+        yield [['foo' => 'false'], true];
+        yield [['foo' => new stdClass()], true];
+        yield [[], false];
     }
 
     /**
      * @test
-     * @dataProvider exists
+     * @dataProvider cases
      */
-    public function shouldReturnTrueWhenExistUsingArrayKeyExists($arr)
+    public function shouldReturnTrueWhenExistUsingArrayKeyExists($arr, $expected)
     {
         $actual = array_key_exists('foo', $arr);
 
-        $this->assertTrue($actual);
+        $this->assertSame($expected, $actual);
     }
 
     /**
      * @test
-     * @dataProvider exists
+     * @dataProvider cases
      */
-    public function shouldReturnTrueWhenExistUsingIssetOrNotEmpty($arr)
+    public function shouldReturnTrueWhenExistUsingIsset($arr, $expected)
     {
         $this->markTestSkipped('WTF');
 
-        $actual = isset($arr['foo']) || !empty($arr['foo']);
+        $actual = isset($arr['foo']) xor ($arr['foo'] !== null);
 
-        $this->assertTrue($actual);
-    }
-
-    /**
-     * @test
-     * @dataProvider exists
-     */
-    public function shouldReturnTrueWhenExistUsingIssetAndNotNull($arr)
-    {
-        $this->markTestSkipped('WTF');
-
-        $actual = isset($arr['foo']) && ($arr['foo'] !== null);
-
-        $this->assertTrue($actual);
-    }
-
-    /**
-     * @test
-     * @dataProvider notExists
-     */
-    public function shouldReturnFalseWhenNotExistUsingArrayKeyExists($arr)
-    {
-        $this->assertFalse(array_key_exists('foo', $arr));
-    }
-
-    /**
-     * @test
-     * @dataProvider notExists
-     */
-    public function shouldReturnFalseWhenNotExistUsingIssetOrNotEmpty($arr)
-    {
-        $this->assertFalse(array_key_exists('foo', $arr));
-    }
-
-    /**
-     * @test
-     * @dataProvider notExists
-     */
-    public function shouldReturnFalseWhenNotExistUsingIssetAndNotNull($arr)
-    {
-        $this->assertFalse(array_key_exists('foo', $arr));
+        $this->assertSame($expected, $actual);
     }
 }
