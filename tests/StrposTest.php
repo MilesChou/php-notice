@@ -1,14 +1,18 @@
 <?php
 
-namespace Notice;
+namespace Tests;
 
-class StrposTest extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class StrposTest extends TestCase
 {
     /**
      * @test
      */
     public function emptyNeedle()
     {
+
+
         // Can not pass empty string
         //strpos('some-text', '');
 
@@ -16,6 +20,6 @@ class StrposTest extends \PHPUnit_Framework_TestCase
         // PHP 7.3 update: fatal error when pass null
         //strpos('some-text', null);
 
-        $this->assertTrue(true);
+        $this->expectNotToPerformAssertions();
     }
 }

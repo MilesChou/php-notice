@@ -31,3 +31,6 @@ nbproject/*
 /vendor
 /composer.lock
 /composer.phar
+
+# Build files
+/.phpunit.result.cache

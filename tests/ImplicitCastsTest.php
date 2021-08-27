@@ -1,13 +1,13 @@
 <?php
 
-namespace Notice;
+namespace Tests;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
 /**
  * @see https://www.php.net/manual/en/language.operators.comparison.php
  */
-class ImplicitCastsTest extends PHPUnit_Framework_TestCase
+class ImplicitCastsTest extends TestCase
 {
     /**
      * compare a number with a string or the comparison involves numerical strings,

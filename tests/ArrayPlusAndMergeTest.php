@@ -1,10 +1,10 @@
 <?php
 
-namespace Notice;
+namespace Tests;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
-class ArrayPlusAndMergeTest extends PHPUnit_Framework_TestCase
+class ArrayPlusAndMergeTest extends TestCase
 {
     /**
      * @test

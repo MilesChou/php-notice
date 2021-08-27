@@ -1,10 +1,10 @@
 <?php
 
-namespace Notice;
+namespace Tests;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
-class IncDecTest extends PHPUnit_Framework_TestCase
+class IncDecTest extends TestCase
 {
     /**
      * @test

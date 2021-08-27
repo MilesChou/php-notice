@@ -2,9 +2,9 @@
 
 namespace Notice;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
-class InArrayNoticeTest extends PHPUnit_Framework_TestCase
+class InArrayNoticeTest extends TestCase
 {
     /**
      * @test

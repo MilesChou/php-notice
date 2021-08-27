@@ -13,7 +13,7 @@ class ArrayKeyExistsBench
      * @Revs(100000)
      * @Iterations(5)
      */
-    public function benchIssetEmptyWhenNotExist()
+    public function benchIssetOrNotEmptyWhenNotExist()
     {
         $v = [];
 
@@ -24,9 +24,9 @@ class ArrayKeyExistsBench
      * @Revs(100000)
      * @Iterations(5)
      */
-    public function benchIssetEmptyWhenExist()
+    public function benchIssetOrNotEmptyWhenExist()
     {
-        $v = ['foo' => 'here'];
+        $v = ['foo' => null];
 
         $t = isset($v['foo']) || !empty($v['foo']);
     }
@@ -35,22 +35,22 @@ class ArrayKeyExistsBench
      * @Revs(100000)
      * @Iterations(5)
      */
-    public function benchEmptyIssetWhenNotExist()
+    public function benchIssetAndNotNullWhenNotExist()
     {
         $v = [];
 
-        $t = !empty($v['foo']) || isset($v['foo']);
+        $t = isset($v['foo']) && (null !== $v['foo']);
     }
 
     /**
      * @Revs(100000)
      * @Iterations(5)
      */
-    public function benchEmptyIssetWhenExist()
+    public function benchIssetAndNotNullWhenExist()
     {
-        $v = ['foo' => 'here'];
+        $v = ['foo' => null];
 
-        $t = !empty($v['foo']) || isset($v['foo']);
+        $t = isset($v['foo']) && (null !== $v['foo']);
     }
 
     /**
@@ -70,7 +70,7 @@ class ArrayKeyExistsBench
      */
     public function benchArrayKeyExistsWhenExist()
     {
-        $v = ['foo' => 'here'];
+        $v = ['foo' => null];
 
         $t = array_key_exists('foo', $v);
     }

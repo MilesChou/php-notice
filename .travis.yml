@@ -3,13 +3,10 @@ dist: trusty
 language: php
 
 php:
-  - 5.5
-  - 5.6
-  - 7.0
-  - 7.1
   - 7.2
   - 7.3
   - 7.4
+  - 8.0
 
 branches:
   only:
@@ -17,9 +14,9 @@ branches:
 
 before_script:
   # How to use APCu driver on Travis CI
-  - if [[ ${TRAVIS_PHP_VERSION:0:1} == "7" ]]; then echo "extension=apcu.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini; fi
+  - echo "extension=apcu.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   # How to use MongoDB driver on Travis CI
-  - if [[ ${TRAVIS_PHP_VERSION:0:1} == "7" ]]; then echo "extension=mongodb.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini; fi
+  - echo "extension=mongodb.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - php -m
   - php -i
   - composer install

@@ -1,11 +1,11 @@
 <?php
 
-namespace Notice;
+namespace Tests;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use stdClass;
 
-class CallableTest extends PHPUnit_Framework_TestCase
+class CallableTest extends TestCase
 {
     /**
      * @test
@@ -98,9 +98,9 @@ class CallableTest extends PHPUnit_Framework_TestCase
             'barC'
         );
 
-        $this->assertAttributeEquals('barA', 'foo', $objA);
-        $this->assertAttributeEquals('barB', 'foo', $objB);
-        $this->assertAttributeEquals('barC', 'foo', $objC);
+        $this->assertSame('barA', $objA->foo);
+        $this->assertSame('barB', $objB->foo);
+        $this->assertSame('barC', $objC->foo);
     }
 }
 
