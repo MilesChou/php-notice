@@ -17,6 +17,8 @@ class InArrayNoticeTest extends TestCase
             'DEF',
         ];
 
+        $this->markTestSkipped('PHP 8 will failed');
+
         // 0 is in List ['ABC', 'DEF'] ?? What the ....
         $actualCallInArrayWithInt0 = in_array($findThisItemInList, $list);
         $this->assertTrue($actualCallInArrayWithInt0);

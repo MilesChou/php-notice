@@ -1,6 +1,6 @@
 # PHP Notice testing
 
-[![](https://travis-ci.org/MilesChou/php-notice.svg?branch=master)](https://travis-ci.org/MilesChou/php-notice)
+[![tests](https://github.com/MilesChou/php-notice/actions/workflows/tests.yml/badge.svg)](https://github.com/MilesChou/php-notice/actions/workflows/tests.yml)
 
 Notice in PHP Language.
 
