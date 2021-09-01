@@ -4,7 +4,8 @@ namespace Benchmarks;
 
 use PhpBench\Benchmark\Metadata\Annotations\Iterations;
 use PhpBench\Benchmark\Metadata\Annotations\Revs;
-use RuntimeException;
+
+use function is_null;
 
 class IssetIsNullBench
 {
@@ -28,6 +29,7 @@ class IssetIsNullBench
     {
         $v = null;
 
+        // Need add `use function is_null;` for performance
         $t = is_null($v);
     }
 
