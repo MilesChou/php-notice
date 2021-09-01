@@ -2,12 +2,14 @@
 
 namespace Benchmarks;
 
+use PhpBench\Benchmark\Metadata\Annotations\Iterations;
 use PhpBench\Benchmark\Metadata\Annotations\Revs;
 
 class IfElseBench
 {
     /**
-     * @Revs(1000000)
+     * @Revs(100000)
+     * @Iterations(5)
      */
     public function benchTrue()
     {
@@ -19,7 +21,17 @@ class IfElseBench
     }
 
     /**
-     * @Revs(1000000)
+     * @Revs(100000)
+     * @Iterations(5)
+     */
+    public function benchQuestionMarkAssignWhenTrue()
+    {
+        $i = true ? 1 + 1 : 1 - 1;
+    }
+
+    /**
+     * @Revs(100000)
+     * @Iterations(5)
      */
     public function benchFalse()
     {
@@ -28,5 +40,14 @@ class IfElseBench
         } else {
             $i = 1 - 1;
         }
+    }
+
+    /**
+     * @Revs(100000)
+     * @Iterations(5)
+     */
+    public function benchQuestionMarkAssignWhenFalse()
+    {
+        $i = false ? 1 + 1 : 1 - 1;
     }
 }

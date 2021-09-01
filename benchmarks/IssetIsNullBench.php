@@ -18,7 +18,7 @@ class IssetIsNullBench
     {
         $v = null;
 
-        $t = isset($v);
+        $t = !isset($v);
     }
 
     /**
