@@ -37,7 +37,7 @@ class ArrayKeyExistsTest extends TestCase
      * @test
      * @dataProvider cases
      */
-    public function shouldReturnTrueWhenExistUsingArrayKeyExists($arr, $expected)
+    public function shouldReturnTrueWhenArrayExistUsingArrayKeyExists($arr, $expected)
     {
         $actual = array_key_exists('foo', $arr);
 
@@ -48,11 +48,9 @@ class ArrayKeyExistsTest extends TestCase
      * @test
      * @dataProvider cases
      */
-    public function shouldReturnTrueWhenExistUsingIsset($arr, $expected)
+    public function shouldReturnTrueWhenObjectExistUsingPropertyExists($arr, $expected)
     {
-        $this->markTestSkipped('WTF');
-
-        $actual = isset($arr['foo']) xor ($arr['foo'] !== null);
+        $actual = property_exists((object)$arr, 'foo');
 
         $this->assertSame($expected, $actual);
     }

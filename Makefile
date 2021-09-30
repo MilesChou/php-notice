@@ -26,3 +26,6 @@ endif
 
 bench:
 	php vendor/bin/phpbench run --report=overview benchmarks
+
+opcode:
+	php -dvld.active=1 dummy.php
