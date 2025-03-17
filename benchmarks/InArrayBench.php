@@ -25,11 +25,11 @@ class InArrayBench
 
     public function init(): void
     {
-        $this->source = range(1, 10);
+        $this->source = range(1, 10000);
 
         shuffle($this->source);
 
-        $this->target = range(1, 10);
+        $this->target = range(9991, 19990);
 
         shuffle($this->target);
         // intersect item is 10 - 10, 10 items

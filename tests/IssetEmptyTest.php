@@ -41,11 +41,59 @@ class IssetEmptyTest extends TestCase
      * @test
      * @dataProvider issetTrueCase
      */
-    public function shouldReturnTrueWhenIssetTrueArrayCaseUsingIsset($arr): void
+    public function shouldReturnTrueWhenIssetTrueArrayCaseUsingIssetz($arr): void
     {
         $actual = isset($arr['foo']);
+        $actual = isset($arr['foo']) ? $arr['foo'] === 1 ? true : false : false;
 
         $this->assertTrue($actual);
+    }
+
+    public function issetTrueCase2(): iterable
+    {
+        yield [''];
+        yield [[]];
+        yield [['a', 'b']];
+        yield [false];
+        yield [true];
+        yield [null];
+//        yield [1];
+        yield [0];
+        yield [-1];
+        yield ['1'];
+        yield ['0'];
+        yield ['-1'];
+        yield ['str'];
+        yield ['true'];
+        yield ['false'];
+        yield [new stdClass()];
+    }
+
+    /**
+     * @test
+     * @dataProvider issetTrueCase2
+     */
+    public function shouldReturnTrueWhenIssetTrueArrayCaseUsingIssetF($input): void
+    {
+        $actual = isset($input) ? $input === 1 ? true : false : false;
+        $this->assertFalse($actual);
+
+        $actual2 = (($input ?? null) === 1) ? 'Y' : 'N';
+        $this->assertFalse($actual2);
+    }
+
+    /**
+     * @test
+     */
+    public function shouldReturnTrueWhenIssetTrueArrayCaseUsingIssetT(): void
+    {
+        $input = 1;
+
+        $actual = isset($input) ? $input === 1 ? true : false : false;
+        $this->assertTrue($actual);
+
+        $actual2 = ($input ?? null) === 1;
+        $this->assertTrue($actual2);
     }
 
     /**
